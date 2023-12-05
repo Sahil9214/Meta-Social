@@ -14,7 +14,7 @@ function App() {
 
     try {
       let res = await axios(
-        `https://metta-backend.onrender.com/country?_limit=10&_page=${page}`
+        `https://meta-backend-5cwb.onrender.com/countries?_limit=10&_page=${page}`
       );
       setCountry(res.data);
       setLoading(false);
@@ -32,7 +32,7 @@ function App() {
     }
     try {
       let res = await axios(
-        `https://metta-backend.onrender.com/country?_limit=10&_page=${page}&name=${search}`
+        `https://meta-backend-5cwb.onrender.com/countries?_limit=10&_page=${page}&name=${search}`
       );
       setCountry(res.data);
       setLoading(false);
