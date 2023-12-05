@@ -76,7 +76,8 @@
   }
 
   .button-div {
-    width: 100%;
-    flex-direction: column;
+    width: 80%;
+    margin: auto;
+
   }
 }

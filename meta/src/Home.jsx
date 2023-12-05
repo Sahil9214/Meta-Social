@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Particle from "./Particle";
 import { Link } from "react-router-dom";
+import nodata from './Images/nodata.png'
 function Home() {
   const [country, setCountry] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -70,7 +71,7 @@ function Home() {
       <div className="grid" style={{ position: "relative" }}>
         {loading && <p>Loading...</p>}
         {error && <p>Error loading data</p>}
-        {!loading && !error && country.length === 0 && <p style={{color:"#fff"}}>No currency found</p>}
+        {!loading && !error && country.length === 0 && <img src={nodata} alt='No data' />}
         {!loading &&
           !error &&
           country.map((el) => (
