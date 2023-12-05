@@ -2,8 +2,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-function App() {
+import Particle from "./Particle";
+import { Link } from "react-router-dom";
+function Home() {
   const [country, setCountry] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -32,8 +33,9 @@ function App() {
     }
     try {
       let res = await axios(
-        `https://meta-backend-5cwb.onrender.com/countries?_limit=10&_page=${page}&name=${search}`
+        `https://meta-backend-5cwb.onrender.com/countries?_limit=10&_page=${page}&currency=${search}`
       );
+      console.log("res", res.data);
       setCountry(res.data);
       setLoading(false);
     } catch (err) {
@@ -47,14 +49,17 @@ function App() {
   }, [page]);
   return (
     <div className="App">
-      <h1>Welcome to My country Page</h1>
+      <Particle />
+      <h1 style={{ color: "#fff", position: "relative", textAlign: "center" }}>
+        Welcome to My country Page
+      </h1>
       <br />
       <br />
-      <div className="Search_Bar">
+      <div className="Search_Bar" style={{ position: "relative" }}>
         <input
           onChange={(e) => setSearch(e.target.value)}
           type="Search Country"
-          placeholder="Search Country By name🔎"
+          placeholder="Search Currency By name🔎"
           className="input"
         />
         <button onClick={handleSearch} className="btn_search">
@@ -62,9 +67,10 @@ function App() {
         </button>
       </div>
       <br />
-      <div className="grid">
+      <div className="grid" style={{ position: "relative" }}>
         {loading && <p>Loading...</p>}
         {error && <p>Error loading data</p>}
+        {!loading && !error && country.length === 0 && <p style={{color:"#fff"}}>No currency found</p>}
         {!loading &&
           !error &&
           country.map((el) => (
@@ -75,14 +81,19 @@ function App() {
                 padding: "12px",
               }}
             >
-              <h2>{el.name}</h2>
+              <h2 style={{ color: "#fff" }}>{el.name}</h2>
+              <h4 style={{ color: "#fff" }}>
+                <span style={{ color: "red" }}>Currency👉</span>
+                {el.currency}
+              </h4>
+             
               {/* Render other data properties as needed */}
             </div>
           ))}
       </div>
       <br />
       <br />
-      <div className="button-div">
+      <div className="button-div" style={{ position: "relative" }}>
         <button className="btn" onClick={() => setPage(page - 1)}>
           Prev
         </button>
@@ -95,4 +106,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

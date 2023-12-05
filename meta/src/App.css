@@ -1,3 +1,4 @@
+/* Common styles for all screen sizes */
 .App {
   text-align: center;
 }
@@ -28,40 +29,54 @@
   color: #61dafb;
 }
 
+/* Responsive styles */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   width: 80%;
   margin: auto;
 }
+
 .button-div {
   display: flex;
+
   justify-content: space-between;
-  width: 40%;
+  width: 50%;
   margin: auto;
+  
 }
-.btn{
+
+.btn {
   padding: 8px 17px;
   color: #fff;
   background-color: rgb(240, 66, 66);
   border: none;
   font-weight: 800;
+  margin-bottom: 10px; /* Add margin for better spacing on small screens */
 }
+
 .input {
-  padding: 10px 80px;
+  padding: 10px 20px;
+  margin-bottom: 10px; /* Add margin for better spacing on small screens */
 }
-.btn_search{
-padding: 10px 20px;
-font-weight: 600;
-color: #fff;
-background-color: rgb(197, 61, 61);
+
+.btn_search {
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #fff;
+  background-color: rgb(197, 61, 61);
+  margin-bottom: 10px; /* Add margin for better spacing on small screens */
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .button-div {
+    width: 100%;
+    flex-direction: column;
   }
 }
