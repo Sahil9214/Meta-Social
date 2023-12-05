@@ -51,7 +51,7 @@ function Home() {
   return (
     <div className="App">
       <Particle />
-      <h1 style={{ color: "#fff", position: "relative", textAlign: "center" }}>
+      <h1 style={{ color: "#fff", position: "relative", textAlign: "center" }} className='h1_file'>
         Welcome to My country Page
       </h1>
       <br />
